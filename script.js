@@ -223,11 +223,11 @@ function buyUpgrade(name) {
         Math.pow(2.5, gameObject.upgrades[name].amount);
       gameObject.travelPower = Math.pow(2, gameObject.upgrades[name].amount);
     }
-    if (name == "kongmunist_multiplier") {
+    if (name == "multiplier") {
       gameObject.upgrades[name].cost =
         gameObject.upgrades[name].start_cost *
         Math.pow(1.3, gameObject.upgrades[name].amount);
-      gameObject.kongmunist_multiplier = Math.pow(1.03, gameObject.upgrades[name].amount);
+      gameObject.multiplier = Math.pow(1.03, gameObject.upgrades[name].amount);
     }
     updateUpgrades();
   }
