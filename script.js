@@ -7,53 +7,47 @@ var gameObject = {
   theme: "light",
 
   generators: {
-    drone: {
+    gen1: {
       amount: 0,
       cost: 10,
       start_cost: 10,
       dps: 1,
-      name: "Exploration Drone",
-      tooltip: "A small drone to help you explore! (1 dps)"
+      name: "Generator 1",
     },
-    space_rocket: {
+    gen2: {
       amount: 0,
       cost: 150,
       start_cost: 100,
       dps: 3,
-      name: "Space Rocket",
-      tooltip: "Not a lot of space on this space rocket... (3 dps)"
+      name: "Generator 2",
     },
-    probe: {
+    gen3: {
       amount: 0,
       cost: 2000,
       start_cost: 2000,
       dps: 15,
-      name: "Probe",
-      tooltip: "Use probes to explore space! (15 dps)"
+      name: "Generator 3",
     },
-    dugguranium_rocket: {
+    gen4: {
       amount: 0,
       cost: 10000,
       start_cost: 12500,
       dps: 120,
-      name: "Dugguranium Rocket",
-      tooltip: "Rocket powered by the rare dugguranium fuel compound. (120 dps)"
+      name: "Generator 4",
     },
-    quantum_teleportation: {
+    gen5: {
       amount: 0,
       cost: 100000,
       start_cost: 100000,
       dps: 900,
-      name: "Quantum Teleportation",
-      tooltip: "Twist knob to seven and engage muffin switch. (900 dps)"
+      name: "Generator 5",
     },
-    time_dialation: {
+    gen6: {
       amount: 0,
       cost: 5000000,
       start_cost: 5000000,
       dps: 15000,
-      name: "Time Dialator",
-      tooltip: "Does not include multiversal return system. (15000 dps)"
+      name: "Generator 6",
     }
   },
 
@@ -64,11 +58,11 @@ var gameObject = {
       start_cost: 100,
       name: "Double Click Power"
     },
-    kongmunist_multiplier: {
+    multiplier: {
       amount: 0,
       cost: 1000,
       start_cost: 1000,
-      name: "Kongmunist Multiplier"
+      name: "Upgradable Multiplier"
     },
   }
 };
