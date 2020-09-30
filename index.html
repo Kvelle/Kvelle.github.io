@@ -1,18 +1,201 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-	  <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-    <title>Hello</title>
-		
-		<link rel="stylesheet" type = "text/css" href="style.css">
+
+    <title id="pageTitle">Incremental</title>
+    <link
+      rel="icon"
+      href="https://cdn.glitch.com/467b93bf-5e1e-4571-b96c-7067dc73ea4f%2Finfinity.png?v=1599619737436"
+    />
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="/script.js" defer></script>
   </head>
-  <body>
-	  <div class="container">
-			<p class="currency-amount">0</p>
-			<button class="button" onclick="numberGoUp()">Make number go up</button>
-		</div>
+  <body id="body" class="light">
+      
+    <header>
+      <ul class="nav-links">
+        <li><p>v0.1.4</p></li>
+        <li id="lastSaveLabel"></li>
+      </ul>
+    </header>
+
+    <div id="smallScreen" style="text-align:center; margin-top:2rem;">
+      <p>
+        Sorry, this game is designed for larger screens.
+      </p>
+    </div>
+    
+    <main>
+      <div id="topNumberWrapper">
+        <h2 id="currencyAmount"></h2>
+        <h4 id="currencyPerSecond"></h4>
+      </div>
+
+      <div id="tabButtonWrapper">
+        <button onclick="showTab(1)" id="tBtn1" class="tabButton standardBtn">
+          Distance
+        </button>
+        <button onclick="showTab(2)" id="tBtn2" class="tabButton standardBtn">
+          ???
+        </button>
+        <button onclick="showTab(3)" id="tBtn3" class="tabButton standardBtn">
+          Stats
+        </button>
+        <button onclick="showTab(4)" id="tBtn4" class="tabButton standardBtn">
+          Settings
+        </button>
+      </div>
+
+      <div id="tab1">
+        <div id="travelTabButtonWrapper">
+          <button
+            onclick="showTravelTab(1)"
+            id="stBtn1"
+            class="subtabButton standardBtn"
+          >
+            Explore
+          </button>
+          <button
+            onclick="showTravelTab(2)"
+            id="stBtn2"
+            class="subtabButton standardBtn"
+          >
+            Industrialize
+          </button>
+          <button
+            onclick="showTravelTab(3)"
+            id="stBtn3"
+            class="subtabButton standardBtn"
+          >
+            Research
+          </button>
+          <button
+            onclick="showTravelTab(4)"
+            id="stBtn4"
+            class="subtabButton standardBtn"
+          >
+            Prestige
+          </button>
+        </div>
+        <div id="travelBtnWrapper">
+          <button
+            class="standardBtn"
+            style="height:40px"
+            onclick="travelPressed()"
+          >
+            Travel
+          </button>
+        </div>
+        <div id="travelTab1">
+          <div id="explorationHeading">
+            <h3 class="centerHeading">Exploration</h3>
+            <h3 class="centerHeading">TIER 1</h3>
+          </div>
+          <div id="generators"></div>
+        </div>
+        <div id="travelTab2">
+          <div id="industryHeading">
+            <h3 class="centerHeading">Industrialize</h3>
+            <h3 class="centerHeading">TIER 2</h3>
+          </div>
+        </div>
+        <div id="travelTab3">
+          <div id="researchHeading">
+            <h3 class="centerHeading">Research</h3>
+          </div>
+          <div id="upgrades"></div>
+        </div>
+        <div id="travelTab4">
+          <div class="centerContainer">
+            <button class="standardBtn">
+              Prestige
+            </button>
+          </div>
+        </div>
+        <p id="test">0</p>
+      </div>
+      <div id="tab2"></div>
+      <div id="tab3">
+        <div class="textWrapper">
+          <ul>
+            <li id="startDate"></li>
+          </ul>
+        </div>
+      </div>
+      <div id="tab4">
+        <div class="textWrapper">
+          <ul>
+            <li>Autosaves every thirty seconds. Export saves frequently.</li>
+          </ul>
+        </div>
+        <div class="settingsWrapper">
+          <button class="standardBtn" disabled="true">
+            <select id="themeSelector">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </button>
+        </div>
+        <div class="settingsWrapper">
+          <button class="standardBtn" onclick="saveGame()">SAVE</button>
+          <a href="javascript:close_window();"
+            ><button class="standardBtn">Save & Exit</button></a
+          >
+          <button
+            class="standardBtn"
+            onclick="wipeGame()"
+            style="color:#BF1818"
+          >
+            WIPE SAVE
+          </button>
+        </div>
+        <div class="settingsWrapper">
+          <div id="saveBoxWrapper">
+            <div>
+              <button
+                class="standardBtn"
+                onclick="clearSaveBox()"
+                style="height:20px;width:50px;margin:0 0 1rem 0;transition:0.1s"
+              >
+                Clear
+              </button>
+              <button
+                class="standardBtn"
+                onclick="copySave()"
+                style="height:20px;width:50px;margin:0 0 1rem 0;transition:0.1s"
+              >
+                Copy
+              </button>
+              <button
+                class="standardBtn"
+                onclick="importSaveString()"
+                style="height:20px;width:50px;margin:0 0 1rem 0;transition:0.1s"
+              >
+                Import
+              </button>
+              <button
+                class="standardBtn"
+                onclick="exportSaveString()"
+                style="height:20px;width:50px;margin:0 0 1rem 0;transition:0.1s"
+              >
+                Export
+              </button>
+            </div>
+            <strong>SaveBox</strong>
+            <input type="text" id="saveBox" />
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
