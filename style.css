@@ -3,11 +3,11 @@ margin: 0;
 padding: 0;
 }
 
-.currency-container {
+.container {
 display: flex;
 justify-content: center;
 }
 
 .button {
-width: 50px;
+border-radius: 5px;
 }
